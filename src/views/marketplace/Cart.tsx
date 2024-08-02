@@ -3,6 +3,7 @@ import { removeFromCart } from '@/store'
 import { BsTrash } from 'react-icons/bs'
 import { FaBitcoin } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
+import LazyLoad from 'react-lazyload'
 
 const Cart = () => {
     const cart = useSelector((state) => state.cart.cart)
@@ -21,6 +22,7 @@ const Cart = () => {
     const taxAmount = totalBitcoin * taxRate
     const grandTotal = totalBitcoin + taxAmount
     const totalPrice = calculateTotalPrice()
+
     return (
         <div className="p-3">
             <p className="text-2xl text-white">My Basket</p>
@@ -49,18 +51,20 @@ const Cart = () => {
                 >
                     <div className="my-3 flex-1">
                         <div className="py-2 px-2 flex items-center gap-2">
-                            <div
-                                className="relative h-20 w-20 bg-cover bg-center rounded-lg"
-                                style={{
-                                    backgroundImage: `url(${cartItem.bg})`,
-                                }}
-                            >
-                                <img
-                                    src={cartItem.nft}
-                                    className="absolute inset-0 m-auto h-1/2 w-1/2 object-cover rounded-lg"
-                                    alt={cartItem.name}
-                                />
-                            </div>
+                            <LazyLoad height={80} offset={100} once>
+                                <div
+                                    className="relative h-20 w-20 bg-cover bg-center rounded-lg"
+                                    style={{
+                                        backgroundImage: `url(${cartItem.bg})`,
+                                    }}
+                                >
+                                    <img
+                                        src={cartItem.nft}
+                                        className="absolute inset-0 m-auto h-1/2 w-1/2 object-cover rounded-lg"
+                                        alt={cartItem.name}
+                                    />
+                                </div>
+                            </LazyLoad>
                             <div>
                                 <div className="font-bold text-gray-900 dark:text-gray-100">
                                     {cartItem.name}: {cartItem.count}
@@ -85,26 +89,26 @@ const Cart = () => {
                     <span>Tx Fee</span>
                     <span>
                         14,035 sats
-                        <span className="text-gray-400">| $ $ 9.35</span>
+                        <span className="text-gray-400">| $ 9.35</span>
                     </span>
                 </div>
                 <div className="flex justify-between text-white mt-2">
                     <span>Fee Savings</span>
                     <span>
-                        5,035 sats{' '}
-                        <span className="text-gray-400">| $ 3.35</span>{' '}
+                        5,035 sats
+                        <span className="text-gray-400">| $ 3.35</span>
                     </span>
                 </div>
                 <div className="flex justify-between text-white mt-2">
                     <span>Time Estimate</span>
                     <span>30 minutes</span>
                 </div>
-                <div className="flex justify-between  text-white mt-2 font-medium border-t border-gray-700">
+                <div className="flex justify-between text-white mt-2 font-medium border-t border-gray-700">
                     <span className="text-xl">EXPECTED TOTAL</span>
                     <span className="text-md mt-1 font-medium">
                         {grandTotal.toFixed(4)}{' '}
-                        <span className="text-orange-500 ">BTC </span>| ${' '}
-                        {totalPrice.toFixed(2)}{' '}
+                        <span className="text-orange-500">BTC </span>| ${' '}
+                        {totalPrice.toFixed(2)}
                     </span>
                 </div>
             </div>

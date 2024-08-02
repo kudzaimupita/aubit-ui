@@ -14,7 +14,7 @@ import { useAppSelector } from '@/store'
 import Logo from './Logo'
 
 const VerticalMenuContent = lazy(
-    () => import('@/components/template/VerticalMenuContent'),
+    () => import('@/components/template/VerticalMenuContent')
 )
 
 type MobileNavToggleProps = {
@@ -38,16 +38,16 @@ const MobileNav = () => {
 
     const themeColor = useAppSelector((state) => state.theme.themeColor)
     const primaryColorLevel = useAppSelector(
-        (state) => state.theme.primaryColorLevel,
+        (state) => state.theme.primaryColorLevel
     )
     const navMode = useAppSelector((state) => state.theme.navMode)
     const mode = useAppSelector((state) => state.theme.mode)
     const direction = useAppSelector((state) => state.theme.direction)
     const currentRouteKey = useAppSelector(
-        (state) => state.base.common.currentRouteKey,
+        (state) => state.base.common.currentRouteKey
     )
     const sideNavCollapse = useAppSelector(
-        (state) => state.theme.layout.sideNavCollapse,
+        (state) => state.theme.layout.sideNavCollapse
     )
     const userAuthority = useAppSelector((state) => state.auth.user.authority)
 
@@ -69,15 +69,11 @@ const MobileNav = () => {
         <>
             {smaller.md && (
                 <>
-                    <div className="text-2xl bg-black" onClick={openDrawer}>
-                        <MobileNavToggle toggled={isOpen} />
+                    <div className="text-2xl " onClick={openDrawer}>
+                        <MobileNavToggle toggled={isOpen} isMobile={true}/>
                     </div>
                     <Drawer
-                        title={
-                            <div className="">
-                                <Logo />
-                            </div>
-                        }
+                        title={<div className=''><Logo/></div>}
                         isOpen={isOpen}
                         bodyClass={classNames(navColor(), 'p-0 bg-black')}
                         width={330}
