@@ -84,7 +84,7 @@ const SideNav = () => {
                         'side-nav',
                         sideNavColor(),
                         !sideNavCollapse && 'side-nav-expand',
-                        'bg-neutral-900 border-r border-neutral-900',
+                        'bg-neutral-900 ',
                     )}
                 >
                     <div className="side-nav-header my-2">

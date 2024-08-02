@@ -12,7 +12,7 @@
 }
 
 .side-nav-light {
-  @apply bg-white border-r border-gray-200;
+  @apply bg-white ;
 }
 
 .side-nav-dark {
