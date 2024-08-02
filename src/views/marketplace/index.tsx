@@ -4,6 +4,7 @@ import { addToCart } from '@/store'
 import { useEffect, useState } from 'react'
 import { FaCartPlus } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
+import LazyLoad from 'react-lazyload'
 
 import sampleData from '../nftData.json'
 
@@ -50,41 +51,43 @@ const Home = () => {
                         onMouseLeave={() => setHoveredIndex(null)}
                     >
                         <div className="relative flex flex-col rounded-[10px] bg-clip-border p-2">
-                            <div
-                                className="relative w-full h-64 bg-cover bg-center rounded-lg"
-                                style={{ backgroundImage: `url(${nft.bg})` }}
-                            >
-                                <img
-                                    src={nft.nft}
-                                    className="absolute inset-0 m-auto h-1/2 w-1/2 object-cover rounded-lg"
-                                    alt=""
-                                />
-                                {hoveredIndex === i && (
-                                    <button
-                                        className={`absolute top-3 right-3 p-2 bg-white rounded-full cursor-pointer transition-transform duration-300 `}
-                                        onClick={() => handleAddToCart(nft)}
-                                    >
-                                        {animateCart ? (
-                                            <Spinner />
-                                        ) : (
-                                            <FaCartPlus size={24} />
-                                        )}
+                            <LazyLoad height={256} offset={100} once>
+                                <div
+                                    className="relative w-full h-64 bg-cover bg-center rounded-lg"
+                                    style={{ backgroundImage: `url(${nft.bg})` }}
+                                >
+                                    <img
+                                        src={nft.nft}
+                                        className="absolute inset-0 m-auto h-1/2 w-1/2 object-cover rounded-lg"
+                                        alt=""
+                                    />
+                                    {hoveredIndex === i && (
+                                        <button
+                                            className={`absolute top-3 right-3 p-2 bg-white rounded-full cursor-pointer transition-transform duration-300 `}
+                                            onClick={() => handleAddToCart(nft)}
+                                        >
+                                            {animateCart ? (
+                                                <Spinner />
+                                            ) : (
+                                                <FaCartPlus size={24} />
+                                            )}
+                                        </button>
+                                    )}
+                                    <button className="absolute top-3 left-3 flex items-center justify-center rounded-full bg-opacity-70 bg-black p-2">
+                                        <div className="flex h-full w-full items-center justify-center rounded-full text-sm">
+                                            {nft.bitcoin.toFixed(6)}
+                                            <span className="ml-1 text-orange-500">
+                                                {' '}
+                                                BTC{' '}
+                                            </span>
+                                            <span className="mx-2 text-gray-600">
+                                                |
+                                            </span>
+                                            $ {nft.price.toFixed(2)}
+                                        </div>
                                     </button>
-                                )}
-                                <button className="absolute top-3 left-3 flex items-center justify-center rounded-full bg-opacity-70 bg-black p-2">
-                                    <div className="flex h-full w-full items-center justify-center rounded-full text-sm">
-                                        {nft.bitcoin.toFixed(6)}
-                                        <span className="ml-1 text-orange-500">
-                                            {' '}
-                                            BTC{' '}
-                                        </span>
-                                        <span className="mx-2 text-gray-600">
-                                            |
-                                        </span>
-                                        $ {nft.price.toFixed(2)}
-                                    </div>
-                                </button>
-                            </div>
+                                </div>
+                            </LazyLoad>
                             <div className="flex items-center justify-between px-1 md:items-start bg-neutral-900 mt-2 rounded-lg">
                                 <div className="m-2">
                                     <p className="mt-1 text-sm font-medium text-gray-300 md:mt-2">
