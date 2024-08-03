@@ -14,7 +14,7 @@ const Header = (props: HeaderProps) => {
     const { headerStart, headerEnd, headerMiddle, className, container } = props
 
     return (
-        <header className={classNames('header', className, 'bg-neutral-900', 'overflow-x-auto overflow-y-auto md:overflow-hidden')}>
+        <header className={classNames('header', className, 'bg-neutral-900', 'overflow-x-auto overflow-y-auto lg:overflow-hidden')}>
             <div
                 className={classNames(
                     'header-wrapper',
