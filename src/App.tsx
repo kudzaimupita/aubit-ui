@@ -6,7 +6,7 @@ import Theme from '@/components/template/Theme'
 import Layout from '@/components/layouts'
 import './locales'
 import { Dialog } from './components/ui'
-import Cart from './views/marketplace/Cart'
+import Cart from './views/marketplace/components/Cart'
 import { closeCart } from './store/slices/wallet/cartUiSlice'
 
 function AppContent() {

@@ -43,7 +43,6 @@ const Cart = () => {
                     </div>      <div
                         className="absolute right-12 top-32
                          transform -translate-y-1/2 p-2 text-white hover:text-red-800"
-                        // onClick={() => dispatch(removeFromCart(cartItem.id))}
                     >
                      0.00312414 BTC
                     </div>
