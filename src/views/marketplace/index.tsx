@@ -37,7 +37,7 @@ const Home = () => {
         dispatch(addToCart(nft))
         setTimeout(() => {
             setAnimateCart(false)
-        }, 500)
+        }, 200)
     }
 
     return (
@@ -63,7 +63,7 @@ const Home = () => {
                                     />
                                     {hoveredIndex === i && (
                                         <button
-                                            className={`absolute top-3 right-3 p-2 bg-white rounded-full cursor-pointer transition-transform duration-300 `}
+                                            className={`absolute top-3 right-3 p-2  bg-black bg-opacity-70 rounded-full cursor-pointer transition-transform duration-300 `}
                                             onClick={() => handleAddToCart(nft)}
                                         >
                                             {animateCart ? (
