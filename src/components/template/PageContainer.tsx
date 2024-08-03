@@ -81,13 +81,7 @@ const PageContainer = (props: PageContainerProps) => {
                     )}
                 </div>
             </main>
-            {footer && (
-                <Footer
-                    pageContainerType={
-                        pageContainerType as FooterPageContainerType
-                    }
-                />
-            )}
+       
         </div>
     )
 }
